@@ -1,0 +1,237 @@
+/* Base styles */
+:root {
+    --bg-color: #f5f5f5;
+    --text-color: #000000;
+    --border-color: #000000;
+    --hover-bg: #d9d9d9;
+  }
+
+  /* ia-writer-mono-latin-400-normal */
+@font-face {
+    font-family: 'iA Writer Mono';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-mono@latest/latin-400-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-mono@latest/latin-400-normal.woff) format('woff');
+  }
+  
+  .dark-mode {
+    --bg-color: #000000;
+    --text-color: #f5f5f5;
+    --border-color: #f5f5f5;
+    --hover-bg: #333333;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'iA Writer Mono', monospace;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+  
+  .logo {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  .dark-mode-toggle {
+    background: none;
+    border: none;
+    font-family: 'iA Writer Mono', monospace;
+    font-size: 14px;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0px 2px;
+  }
+
+  .dark-mode-toggle:hover {
+    background-color: var(--hover-bg);
+  }
+
+  .dark-mode-toggle:active {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+  }
+  
+  /* Main content */
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  /* Phrase container with simple hover */
+  .phrase-container {
+    width: 100%;
+    margin-bottom: 12px;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .weather-phrase, .weather-details {
+    font-size: 14px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .weather-details {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--bg-color);
+    width: 100%;
+  }
+  
+  .phrase-container:hover .weather-details {
+    display: block;
+  }
+  
+  /* GIF container */
+  .gif-container {
+    width: 100%;
+    height: 400px; /* Fixed height */
+    border: 1px solid var(--border-color);
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+  
+  .weather-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Search container */
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    width: 100%;
+  }
+  
+  .search-label {
+    white-space: nowrap;
+    font-size: 14px;
+  }
+  
+  .search-input {
+    width: 200px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    color: var(--text-color);
+    text-transform: uppercase;
+  }
+  
+  .search-input:focus {
+    outline: none;
+  }
+  
+  .search-button {
+    background: none;
+    border: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    color: var(--text-color);
+    cursor: pointer;
+  }
+
+    .search-button:hover {
+        background-color: var(--hover-bg);
+    }
+
+    .search-button:active {
+        background-color: var(--text-color);
+        color: var(--bg-color);
+    }
+  
+  /* Footer */
+  footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    font-size: 14px;
+  }
+
+
+  .credit a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding-left: 2px;
+  }
+
+    .credit a:hover {
+        background-color: var(--hover-bg);
+    }
+
+    .credit a:active {
+        background-color: var(--text-color);
+        color: var(--bg-color);
+    }
+
+  .credit a::after {
+    content: "[ ]";
+  }
+  
+  .credit a:hover::after {
+    content: "[→]";
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem;
+    }
+    
+    header, footer {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+    
+    .gif-container {
+      height: 350px; /* Smaller height on mobile */
+    }
+    
+    .weather-phrase, .weather-details {
+      font-size: 0.875rem;
+    }
+  }
+  
+  /* Loading state */
+  .loading .search-button {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }

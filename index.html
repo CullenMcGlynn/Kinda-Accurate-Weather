@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kinda Accurate Weather</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="logo">KINDA ACCURATE WEATHER</h1>
+      <button id="dark-mode-toggle" class="dark-mode-toggle">DARK MODE</button>
+    </header>
+
+    <main>
+      <div class="phrase-container">
+        <p id="weather-phrase" class="weather-phrase">I THINK THERES A GOOD CHANCE ITS GONNA RAIN</p>
+        <p id="weather-details" class="weather-details">TEMP: -- | HUMIDITY: -- | WIND: --</p>
+      </div>
+      
+      <div class="gif-container">
+        <img id="weather-gif" src="gifs/default.gif" alt="Weather condition" class="weather-gif">
+      </div>
+      
+      <div class="search-container">
+        <label for="city-input" class="search-label">WEATHER IN</label>
+        <input type="text" id="city-input" class="search-input" placeholder="">
+        <button id="search-button" class="search-button">[SEARCH]</button>
+      </div>
+    </main>
+
+    <footer>
+      <p class="credit">MADE BY <a target="_blank" href="https://cullenm.website/">CULLEN MCGLYNN </a></p>
+      <p class="socials">SOCIALS</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
