@@ -242,4 +242,5 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.toggle('dark-mode');
       darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? 'LIGHT MODE' : 'DARK MODE';
     });
+
   });
