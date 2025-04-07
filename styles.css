@@ -123,19 +123,23 @@
   /* GIF container */
   .gif-container {
     width: 100%;
-    height: 400px; /* Fixed height */
-    border: 1px solid var(--text-color);
+    height: 0;
+    padding-bottom: 100%; /* Creates a perfect square */
+    border: 2px solid var(--text-color);
     margin-bottom: 8px;
+    position: relative;
     overflow: hidden;
-  }
+    }
   
-  .weather-gif {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
+    .weather-gif {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        background-color: var(--bg-color); /* Match background color */
+      }
   :root {
     --border-color: #000;
     --text-color: #333;
@@ -155,7 +159,7 @@
     white-space: nowrap;
     font-size: 14px;
     display: block;
-    font-family: 'Space Mono', monospace;
+    font-family: 'iA Writer Mono', monospace;
     font-size: 14px;
     color: var(--text-color);
   }
@@ -170,7 +174,7 @@
     background: none;
     border: none;
     border-bottom: 1px solid var(--border-color);
-    font-family: 'Space Mono', monospace;
+    font-family: 'iA Writer Mono', monospace;
     font-size: 14px;
     color: var(--text-color);
     text-transform: uppercase;

@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
               phraseCategory = 'clouds';
               break;
             case 'rain':
-              gifUrl = 'gifs/rainy.gif';
+              gifUrl = 'gifs/Rain_Animation_Loop.gif';
               phraseCategory = 'rain';
               break;
             case 'drizzle':
