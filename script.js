@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // Then check for regular weather conditions
           switch (weatherMain) {
             case 'clear':
-              gifUrl = 'gifs/sunny.gif';
+              gifUrl = 'Sunny(Preview).gif';
               phraseCategory = 'clear';
               break;
             case 'clouds':
