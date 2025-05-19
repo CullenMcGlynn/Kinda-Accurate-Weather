@@ -145,6 +145,46 @@
     --text-color: #333;
     --focus-border-color: #000;
   }
+
+  .gif-container {
+    width: 100%;
+    height: 500px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .weather-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  /* Show/hide GIFs based on mode */
+  .light-mode-gif {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .dark-mode-gif {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  /* When in dark mode */
+  .dark-mode .light-mode-gif {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .dark-mode .dark-mode-gif {
+    opacity: 1;
+    visibility: visible;
+  }
   
   /* Search container */
   .search-container {

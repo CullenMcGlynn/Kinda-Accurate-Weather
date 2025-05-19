@@ -5,7 +5,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchButton = document.getElementById('search-button');
   const weatherPhrase = document.getElementById('weather-phrase');
   const weatherDetails = document.getElementById('weather-details');
-  const weatherGif = document.getElementById('weather-gif');
+  const weatherGifContainer = document.querySelector('.gif-container');
+  
+  // Create two image elements for light and dark mode
+  const lightGifImg = document.createElement('img');
+  lightGifImg.className = 'weather-gif light-mode-gif';
+  lightGifImg.alt = 'Weather condition';
+  weatherGifContainer.appendChild(lightGifImg);
+  
+  const darkGifImg = document.createElement('img');
+  darkGifImg.className = 'weather-gif dark-mode-gif';
+  darkGifImg.alt = 'Weather condition';
+  weatherGifContainer.appendChild(darkGifImg);
+  
+  // Remove the original img if it exists
+  const originalImg = document.getElementById('weather-gif');
+  if (originalImg) {
+    originalImg.remove();
+  }
 
   // API Key - Replace with your OpenWeatherMap API key
   const apiKey = '72884977f6f1d758ac61512d1547665b'; // Replace this with your actual API key
@@ -50,18 +67,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Use the EXACT same paths that worked in your test.html file
   const weatherGifs = {
     light: {
-      sunny: 'gifs/dark-sunny.gif',    // Use the exact path that worked in test.html
-      cloudy: 'gifs/dark-cloudy.gif',  // Use the exact path that worked in test.html
-      rainy: 'gifs/dark-rainy.gif',    // Use the exact path that worked in test.html
-      windy: 'gifs/dark-windy.gif',    // Use the exact path that worked in test.html
-      default: 'gifs/sunny-light.gif'   // Use one of your working GIFs as default
+      sunny: 'gifs/dark-sunny.gif',
+      cloudy: 'gifs/dark-cloudy.gif',
+      rainy: 'gifs/dark-rainy.gif',
+      windy: 'gifs/dark-windy.gif',
+      default: 'gifs/sunny-light.gif'
     },
     dark: {
-      sunny: 'gifs/light-sunny.gif',     // Use the exact path that worked in test.html
-      cloudy: 'gifs/light-cloudy.gif',   // Use the exact path that worked in test.html
-      rainy: 'gifs/light-rainy.gif',     // Use the exact path that worked in test.html
-      windy: 'gifs/light-windy.gif',     // Use the exact path that worked in test.html
-      default: 'gifs/sunny-dark.gif'    // Use one of your working GIFs as default
+      sunny: 'gifs/light-sunny.gif',
+      cloudy: 'gifs/light-cloudy.gif',
+      rainy: 'gifs/light-rainy.gif',
+      windy: 'gifs/light-windy.gif',
+      default: 'gifs/sunny-dark.gif'
     }
   };
 
@@ -74,22 +91,22 @@ document.addEventListener('DOMContentLoaded', () => {
     default: null
   };
 
-  // Function to update the GIF based on current mode and weather category
-  function updateGifForCurrentMode() {
-    const mode = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-    const gifPath = weatherGifs[mode][currentWeatherCategory] || weatherGifs[mode].default;
+  // Function to update the GIFs based on current weather category
+  function updateGifs() {
+    const lightGifPath = weatherGifs.light[currentWeatherCategory] || weatherGifs.light.default;
+    const darkGifPath = weatherGifs.dark[currentWeatherCategory] || weatherGifs.dark.default;
     
-    console.log(`Updating GIF: Mode=${mode}, Category=${currentWeatherCategory}, Path=${gifPath}`);
+    console.log(`Updating GIFs: Category=${currentWeatherCategory}`);
     
-    // Set the GIF source
-    weatherGif.src = gifPath;
-    weatherGif.alt = `${currentWeatherCategory} weather`;
+    // Set both GIF sources
+    lightGifImg.src = lightGifPath;
+    darkGifImg.src = darkGifPath;
   }
 
-  // Set default phrase and GIF on load
+  // Set default phrase and GIFs on load
   weatherPhrase.textContent = getNewPhrase('default');
   currentWeatherCategory = 'default';
-  updateGifForCurrentMode();
+  updateGifs();
 
   // Function to get a random phrase that's different from the last one used
   function getNewPhrase(category) {
@@ -182,11 +199,14 @@ document.addEventListener('DOMContentLoaded', () => {
         category = 'sunny';
       }
       
-      // Update current weather category
-      currentWeatherCategory = category;
-      
-      // Update the GIF based on current mode and weather
-      updateGifForCurrentMode();
+      // Check if weather category has changed
+      if (category !== currentWeatherCategory) {
+        // Update current weather category
+        currentWeatherCategory = category;
+        
+        // Update the GIFs
+        updateGifs();
+      }
       
       // Get a new phrase
       weatherPhrase.textContent = getNewPhrase(category);
@@ -216,12 +236,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Dark mode toggle - now also updates the GIF
+  // Dark mode toggle
   darkModeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? 'LIGHT MODE' : 'DARK MODE';
-    
-    // Update the GIF to match the new mode
-    updateGifForCurrentMode();
   });
 });
