@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cloudy: 'gifs/dark-cloudy.gif',
       rainy: 'gifs/dark-rainy.gif',
       windy: 'gifs/dark-windy.gif',
-      default: 'gifs/sunny-light.gif'
+      default: 'gifs/dark-loading.gif'
     },
     dark: {
       sunny: 'gifs/light-sunny.gif',
