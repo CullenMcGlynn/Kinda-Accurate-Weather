@@ -67,18 +67,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Use the EXACT same paths that worked in your test.html file
   const weatherGifs = {
     light: {
-      sunny: 'gifs/dark-sunny.gif',
-      cloudy: 'gifs/dark-cloudy.gif',
-      rainy: 'gifs/dark-rainy.gif',
-      windy: 'gifs/dark-windy.gif',
-      default: 'gifs/dark-loading.gif'
+      sunny: 'gifs/black-sunny.gif',
+      cloudy: 'gifs/black-cloudy.gif',
+      rainy: 'gifs/black-rainy.gif',
+      windy: 'gifs/black-windy.gif',
+      default: 'gifs/black-loading.gif'
     },
     dark: {
-      sunny: 'gifs/light-sunny.gif',
-      cloudy: 'gifs/light-cloudy.gif',
-      rainy: 'gifs/light-rainy.gif',
-      windy: 'gifs/light-windy.gif',
-      default: 'gifs/sunny-dark.gif'
+      sunny: 'gifs/white-sunny.gif',
+      cloudy: 'gifs/white-cloudy.gif',
+      rainy: 'gifs/white-rainy.gif',
+      windy: 'gifs/white-windy.gif',
+      default: 'gifs/white-loading.gif'
     }
   };
 
